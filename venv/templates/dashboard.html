@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Admin Dashboard</a>
+            <div class="d-flex">
+                <a href="{{ url_for('logout') }}" class="btn btn-outline-light">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h2 class="mb-4 text-center">Daftar Tempat Wisata</h2>
+
+        <div class="d-flex justify-content-end mb-3">
+            <a href="{{ url_for('create') }}" class="btn btn-primary">Tambah Tempat Wisata</a>
+        </div>
+
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Nama Tempat</th>
+                    <th>Deskripsi</th>
+                    <th>Gambar</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for place in places %}
+                    <tr>
+                        <td>{{ place['nama'] }}</td>
+                        <td>{{ place['deskripsi'] }}</td>
+                        <td>{{ place['url_gambar'] }}</td>
+                        <td>
+                            <a href="{{ url_for('update', id=place['id']) }}" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="{{ url_for('delete', id=place['id']) }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus tempat ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

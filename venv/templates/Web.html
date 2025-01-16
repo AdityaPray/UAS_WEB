@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+
+</head>
+<body>
+    <nav>
+        <div class="layar-dalam">
+            <div class="logo">
+                <a href=""><img src="{{ url_for('static', filename='Assets/logo-white.png') }}"class="putih" alt=""></a>
+                <a href=""><img src="{{ url_for('static', filename='Assets/logo-black.png') }}"class="hitam" alt=""></a>
+            </div>
+            <div class="menu">
+                <a href="#" class="tombol-menu">
+                    <span class="garis"></span>
+                    <span class="garis"></span>
+                    <span class="garis"></span>
+                </a>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#recommendations">Rekomendasi Tempat Wisata</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#aboutus">About US</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="layar-penuh">
+        <header id="home">
+            <div class="overlay"></div>
+            <video autoplay muted loop>
+                <source src="{{ url_for('static', filename='Assets/Indonesia.mp4') }}" type="video/mp4">
+            </video>
+            <div class="intro">
+                <h3>Temukan Keajaiban Indonesia</h3>
+                <p>Dari Sabang sampai Merauke, kami menyajikan rekomendasi terbaik untuk petualangan anda di Indonesia</p>
+                <p>
+                    <a href="#recommendations" class="tombol">Lihat Destinasi</a>
+                </p>
+            </div>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+            <script src="{{ url_for('static', filename='javascript.js') }}"></script>
+
+        </header>
+        <main>
+            <section id="recommendations">
+                <div class="layar-dalam">
+                    <h3>Rekomendasi Tempat Wisata</h3>
+                    <div class="recommendation-gallery">
+                        <div class="recommendation-item">
+                            <img src="{{url_for('static', filename='Assets/raja-ampat.jpg')}}" alt="Raja Ampat">
+                            <h4>Raja Ampat</h4>
+                            <p>Keindahan bawah laut yang menakjubkan, surga bagi penyelam.</p>
+                        </div>
+                        <div class="recommendation-item">
+                            <img src="{{url_for('static', filename='Assets/licensed-image.jpeg')}}" alt="Gunung Bromo">
+                            <h4>Gunung Bromo</h4>
+                            <p>Panorama matahari terbit dan lautan pasir yang memukau.</p>
+                        </div>
+                        <div class="recommendation-item">
+                            <img src="{{url_for('static', filename='Assets/danau toba.jpeg')}}" alt="Danau Toba">
+                            <h4>Danau Toba</h4>
+                            <p>Danau vulkanik terbesar di Asia Tenggara dengan Pulau Samosir di tengahnya.</p>
+                        </div>
+                        {% for place in places %}
+                        <div class="recommendation-item">
+                            <img src="{{ place['url_gambar'] }}" alt="Image">
+                            <h4>{{ place['nama'] }}</h4>
+                            <p>{{ place['deskripsi'] }}</p>
+                        </div>
+                        {% endfor %}
+                        
+                        <div class="recommendation-item">
+                            <img src="{{url_for('static', filename='Assets/labuan bajo.jpeg')}}" alt="Labuan Bajo">
+                            <h4>Labuan Bajo</h4>
+                            <p>Gerbang menuju Taman Nasional Komodo, dengan pantai indah dan laut jernih.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>            
+            <section id="gallery">
+                <div> <img src="{{url_for('static', filename='Assets/gunung-kabut.jpg')}}"></div>
+                <div> <img src="{{url_for('static', filename='Assets/hutan.jpg')}}"></div>
+                <div> <img src="{{url_for('static', filename='Assets/sawah.jpg')}}"></div>
+                <div> <img src="{{url_for('static', filename='Assets/sunrise.jpg')}}"></div>
+                <div> <img src="{{url_for('static', filename='Assets/balli.jpg')}}"></div>
+                <div> <img src="{{url_for('static', filename='Assets/bali.jpg')}}"></div>
+                <div> <img src="{{url_for('static', filename='Assets/penginapan-rajaampat.jpg')}}"></div>
+                <div> <img src="{{url_for('static', filename='Assets/raja-ampat.jpg')}}"></div>
+                <div> <img src="{{url_for('static', filename='Assets/Air-terjun.jpg')}}"></div>
+                <div> <img src="{{url_for('static', filename='Assets/laut-papua.jpg')}}"></div>
+                <div> <img src="{{url_for('static', filename='Assets/volcano.jpg')}}"></div>
+                <div> <img src="{{url_for('static', filename='Assets/merapi.jpg')}}"></div>
+            </section>
+            <section id="aboutus">
+                <div class="layar-dalam">
+                    <h3>About Us</h3>
+                    <p class="ringkasan">
+                        Mari bersama-sama mengeksplorasi Indonesia, satu destinasi indah pada satu waktu.
+                    </p>
+                    <div class="konten-isi">
+                        <p>
+                            Kami adalah penyedia layanan pariwisata yang berkomitmen untuk menghadirkan pengalaman wisata terbaik bagi para pelancong di seluruh Indonesia. Kami merangkum dan merekomendasikan berbagai destinasi wisata menarik di Indonesia, mulai dari pesona alam yang memukau, kekayaan budaya yang unik, hingga pengalaman kuliner khas setiap daerah.
+
+Dengan jaringan luas dan tim yang berdedikasi, kami hadir untuk mempermudah perjalanan Anda, memberikan informasi lengkap, dan memastikan setiap destinasi yang kami rekomendasikan layak menjadi bagian dari petualangan Anda. Kami percaya bahwa setiap perjalanan adalah pengalaman berharga, dan kami siap menjadi panduan Anda untuk menemukan keindahan Indonesia.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section id="contact">
+                <h2>Contact Us</h2>
+                <p>Ada pertanyaan atau butuh bantuan? Hubungi kami menggunakan formulir di bawah ini:</p>
+                <form id="contactForm">
+                    <label for="name">Nama:</label>
+                    <input type="text" id="name" name="name" required>
+                    
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                    
+                    <button type="submit">Send Message</button>
+                </form>
+                <p id="formMessage"></p>
+            </section>            
+        </main>
+    </div>
+    <footer id="footer">
+        <div class="footer-container">
+            <!-- Bagian tentang perusahaan -->
+            <div class="footer-about">
+                <h3>Tentang Kami</h3>
+                <p>Kami adalah penyedia layanan pariwisata yang merkomendasikan berbagai destinasi wisata menarik di Indonesia.</p>
+            </div>
+    
+            <!-- Bagian kontak -->
+            <div class="footer-contact">
+                <h3>Kontak</h3>
+                <p>Email: travelpariwisata@gmail.com</p>
+                <p>Telepon: +62 812-3456-7890</p>
+                <p>Alamat: Jl. Raya Wisata No.123, Jakarta</p>
+            </div>
+    
+            <!-- Bagian tautan cepat -->
+            <div class="footer-links">
+                <h3>Tautan Cepat</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#aboutus">Tentang Kami</a></li>
+                    <li><a href="#recommendations">Destinasi</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </div>
+    
+            <!-- Bagian media sosial -->
+            <div class="footer-social">
+                <h3>Ikuti Kami</h3>
+                <a href="#" class="social-icon">Facebook</a>
+                <a href="#" class="social-icon">Twitter</a>
+                <a href="#" class="social-icon">Instagram</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Pariwisata Indonesia. All rights reserved.</p>
+        </div>
+    </footer>    
+</body>
+</html>
